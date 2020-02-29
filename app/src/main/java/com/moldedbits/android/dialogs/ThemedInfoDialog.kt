@@ -1,15 +1,12 @@
 package com.moldedbits.android.dialogs
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.ButterKnife
-import butterknife.OnClick
-import com.moldedbits.android.R
-import kotlinx.android.synthetic.main.fragment_themed_dialog.*
+import androidx.fragment.app.DialogFragment
+import com.moldedbits.android.databinding.FragmentThemedDialogBinding
 
 /**
  * Created by viveksingh
@@ -18,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_themed_dialog.*
 class ThemedInfoDialog : DialogFragment() {
 
     var okListener: View.OnClickListener? = null
-
     var button: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,37 +23,42 @@ class ThemedInfoDialog : DialogFragment() {
         isCancelable = true
     }
 
+    private lateinit var binding: FragmentThemedDialogBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.fragment_themed_dialog, container, false)
-        ButterKnife.bind(this, rootView)
-        dialog.setCanceledOnTouchOutside(true)
+        binding = FragmentThemedDialogBinding.inflate(inflater)
+
+        dialog?.setCanceledOnTouchOutside(true)
         val args = arguments
-        tv_message!!.text = args!!.getString(KEY_MESSAGE)
-        tv_title!!.text = args.getString(KEY_TITLE)
-        btn_no!!.visibility = View.GONE
-        button = args.getBoolean(KEY_SHOW_CANCEL_BUTTON)
-        if (button) {
-            btn_no!!.visibility = View.VISIBLE
+        with(binding) {
+            tvMessage.text = args!!.getString(KEY_MESSAGE)
+            tvTitle.text = args.getString(KEY_TITLE)
+            btnNo.visibility = View.GONE
+            button = args.getBoolean(KEY_SHOW_CANCEL_BUTTON)
+            if (button) {
+                btnNo.visibility = View.VISIBLE
+            }
+
+            if (TextUtils.isEmpty(args.getString(KEY_POSITIVE_BUTTON_TEXT))) {
+                btnOk.text = getString(android.R.string.ok)
+            } else {
+                btnOk.text = args.getString(KEY_POSITIVE_BUTTON_TEXT)
+            }
+
+            btnOk.setOnClickListener { onClickOk(it) }
+            btnNo.setOnClickListener { onClickCancel() }
         }
 
-        if (TextUtils.isEmpty(args.getString(KEY_POSITIVE_BUTTON_TEXT))) {
-            btn_ok!!.text = getString(android.R.string.ok)
-        } else {
-            btn_ok!!.text = args.getString(KEY_POSITIVE_BUTTON_TEXT)
-        }
 
-        return rootView
+        return binding.root
     }
 
-    @OnClick(R.id.btn_ok)
-    internal fun onClickOk(view: View) {
+    private fun onClickOk(view: View) {
         dismiss()
         if (okListener != null) {
             okListener!!.onClick(view)
         }
     }
 
-    @OnClick(R.id.btn_no)
     fun onClickCancel() {
         dismiss()
     }

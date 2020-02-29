@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
 import com.moldedbits.android.R
 
 
-class LoadingDialog : android.support.v4.app.DialogFragment() {
+class LoadingDialog : DialogFragment() {
     protected var mbutton = true
 
     private var tvTitle: TextView? = null
@@ -25,14 +26,14 @@ class LoadingDialog : android.support.v4.app.DialogFragment() {
         btnCancel.setOnClickListener(cancelListener)
 
 
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
 
-        if (dialog.window != null) {
-            val params = dialog.window!!.attributes
+        if (dialog?.window != null) {
+            val params = dialog?.window!!.attributes
             params.height = WindowManager.LayoutParams.MATCH_PARENT
             params.width = WindowManager.LayoutParams.MATCH_PARENT
 
-            dialog.window!!.attributes = params
+            dialog?.window!!.attributes = params
         }
 
         mbutton = arguments!!.getBoolean(SHOW_CANCEL_BUTTON)

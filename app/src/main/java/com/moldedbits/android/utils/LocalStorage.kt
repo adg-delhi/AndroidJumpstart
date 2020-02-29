@@ -9,14 +9,9 @@ import com.moldedbits.android.BaseApplication
  * Created by abhishek
  * on 18/03/15.
  */
-class LocalStorage private constructor() {
+class LocalStorage (context: Context, prefName: String) {
 
-    private val preferences: SharedPreferences
-
-    init {
-        preferences = BaseApplication.instance?.getSharedPreferences(PREFS_NAME,
-                Context.MODE_PRIVATE)!!
-    }
+    private val preferences: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
 
     fun storeData(key: String, value: String) {
         val editor = preferences.edit()
@@ -70,14 +65,5 @@ class LocalStorage private constructor() {
 
     fun clear() {
         preferences.edit().clear().apply()
-    }
-
-    companion object {
-
-        val instance = LocalStorage()
-
-        // TODO: 05/04/16 find a way to make this variable and app specific
-        // TODO: 05/04/16 may be get application id somehow and append to this
-        private val PREFS_NAME = "com.moldedbits.SharedPrefs"
     }
 }

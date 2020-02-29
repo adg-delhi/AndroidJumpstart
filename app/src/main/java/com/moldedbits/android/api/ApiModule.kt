@@ -54,14 +54,10 @@ class ApiModule {
                 .setDateFormat("yyyy-MM-dd")
                 .create()
 
-        val rxAdapter = RxJava2CallAdapterFactory
-                .createWithScheduler(Schedulers.io())
-
         val retrofit = Retrofit.Builder()
                 .baseUrl(BuildConfig.API_URL)
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(rxAdapter)
                 .build()
 
         return retrofit.create(ApiService::class.java)

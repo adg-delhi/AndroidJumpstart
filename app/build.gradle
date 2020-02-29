@@ -2,41 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'checkstyle'
-
-checkstyle {
-    toolVersion = '7.6.1'
-}
-
-preBuild.dependsOn 'checkstyle'
-check.dependsOn 'checkstyle'
-
-// auto increment version stuff
-import com.moldedbits.android.MBIncrementVersionTask
-
-task incrementVersionTask(type: MBIncrementVersionTask)
-tasks.whenTaskAdded { task ->
-    if (task.name == 'generateReleaseBuildConfig') {
-        task.dependsOn 'incrementVersionTask'
-    }
-}
-
-task checkstyle(type: Checkstyle) {
-    configFile file("${project.rootDir}/config/quality/checkstyle.xml")
-    source 'src'
-    include '**/*.java'
-    exclude '**/gen/**'
-    exclude '**/test/java/com/moldedbits/android/**'
-
-    classpath = files()
-
-    // set to false if you want to consider warning as error
-    ignoreFailures = false
-}
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
 
     final API_URL_DEV = "https://www.google.com/"
     final API_URL_PROD = "https://www.google.com/"
@@ -44,11 +12,11 @@ android {
     defaultConfig {
         applicationId "com.moldedbits.android"
         minSdkVersion 15
-        targetSdkVersion 27
-        versionCode incrementVersionTask.getCurrentVersionCode()
-        versionName incrementVersionTask.getCurrentVersionName()
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
 
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // setting custom name for apk
         project.ext.set("archivesBaseName", "AndroidJumpstart-" + defaultConfig.versionName
@@ -107,65 +75,35 @@ android {
         }
     }
 
-    lintOptions {
-        // set to true to turn off analysis progress reporting by lint
-        quiet true
-        // if true, stop the gradle build if errors are found
-        abortOnError false
-        // if true, only report errors
-        ignoreWarnings false
-        // if true, emit full/absolute paths to files with errors (true by default)
-        //absolutePaths true
-        // if true, check all issues, including those that are off by default
-        checkAllWarnings true
-        // if true, treat all warnings as errors
-        warningsAsErrors false
-        // turn off checking the given issue id's
-        disable 'TypographyFractions', 'TypographyQuotes'
-        // turn on the given issue id's
-        enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
-        // check *only* the given issue id's
-        //check 'NewApi', 'InlinedApi'
-        // if true, don't include source code lines in the error output
-        noLines false
-        // if true, show all locations for an error, do not truncate lists, etc.
-        showAll true
-        // Fallback lint configuration (default severities, etc.)
-        lintConfig file("default-lint.xml")
-        // if true, generate a text report of issues (false by default)
-        textReport false
-        // location to write the output; can be a file or 'stdout'
-        textOutput 'stdout'
-        // if true, generate an XML report for use by for example Jenkins
-        xmlReport false
-        // file to write report to (if not specified, defaults to lint-results.xml)
-        xmlOutput file("build/reports/lint/lint-report.xml")
-        // if true, generate an HTML report (with issue explanations, sourcecode, etc)
-        htmlReport true
-        // optional path to report (default will be lint-results.html in the builddir)
-        htmlOutput file("build/reports/lint/lint-report.html")
-    }
-
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+
+    // enable viewbinding
+    viewBinding {
+        enabled = true
+    }
+
+    // enable only parcelize and not synthetics
+    androidExtensions {
+        features = ["parcelize"]
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$supportLibVersion"
-    implementation "com.android.support:design:$supportLibVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
 
     // Use Retrofit for API interaction
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
 
     // Timber for logging
-    implementation 'com.jakewharton.timber:timber:4.6.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
     // Dagger 2
     // Dagger 2 dependencies
     implementation 'com.google.dagger:dagger:2.14.1'
@@ -174,13 +112,13 @@ dependencies {
     //Tests
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation "com.android.support:support-annotations:$supportLibVersion"
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'androidx.annotation:annotation:1.0.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
     // Optional -- Mockito framework
     testImplementation 'org.mockito:mockito-core:2.15.0'
     // Optional -- UI testing with Espresso
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     // RX Android
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"

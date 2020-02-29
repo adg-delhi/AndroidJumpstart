@@ -1,7 +1,7 @@
 package com.moldedbits.android.utils.fragmenttransactionhandler
 
 import android.os.Message
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 
 import com.moldedbits.android.dialogs.ThemedInfoDialog
 

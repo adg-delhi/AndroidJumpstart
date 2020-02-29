@@ -10,23 +10,12 @@ import timber.log.Timber
  */
 open class BaseApplication : Application() {
 
-    lateinit var apiComponent: ApiComponent
-    protected set
-
     override fun onCreate() {
         super.onCreate()
-        instance = this
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
 
-        apiComponent = DaggerApiComponent.create()
-    }
-
-    companion object {
-
-        var instance: BaseApplication? = null
-            private set
     }
 }

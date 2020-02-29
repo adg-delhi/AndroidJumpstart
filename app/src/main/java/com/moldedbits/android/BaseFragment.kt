@@ -1,9 +1,7 @@
 package com.moldedbits.android
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.View
-
+import androidx.fragment.app.Fragment
 import com.moldedbits.android.dialogs.LoadingDialog
 import com.moldedbits.android.utils.fragmenttransactionhandler.FragmentTransactionHandler
 
@@ -11,8 +9,6 @@ abstract class BaseFragment : Fragment() {
 
     lateinit var handler: FragmentTransactionHandler
         protected set
-
-    private var loadingDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,20 +36,5 @@ abstract class BaseFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         handler.setActivity(null)
-    }
-
-    protected fun cancelLoadingDialog() {
-        if (loadingDialog != null
-                && loadingDialog!!.dialog != null
-                && loadingDialog!!.dialog.isShowing) {
-            loadingDialog!!.dialog.dismiss()
-        }
-    }
-
-    protected fun showLoadingDialog(stringResId: Int) {
-        loadingDialog = LoadingDialog.newInstance(getString(stringResId),
-                getString(R.string.please_wait), true)
-        loadingDialog!!.show(activity!!.supportFragmentManager, null)
-        loadingDialog!!.cancelListener = View.OnClickListener { cancelLoadingDialog() }
     }
 }
