@@ -1,4 +1,4 @@
-package com.moldedbits.android.utils.fragmenttransactionhandler
+package com.adgdelhi.jumpstart.utils.fragmenttransactionhandler
 
 
 import android.os.Handler

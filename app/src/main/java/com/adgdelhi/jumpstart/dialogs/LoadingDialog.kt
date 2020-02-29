@@ -1,4 +1,4 @@
-package com.moldedbits.android.dialogs
+package com.adgdelhi.jumpstart.dialogs
 
 import android.os.Bundle
 import android.view.*

@@ -1,4 +1,4 @@
-package com.moldedbits.android
+package com.adgdelhi.jumpstart
 
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView
@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
+import com.moldedbits.android.R
 
 abstract class BaseDrawerActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 

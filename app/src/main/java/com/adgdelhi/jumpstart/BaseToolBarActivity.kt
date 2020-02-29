@@ -1,8 +1,9 @@
-package com.moldedbits.android
+package com.adgdelhi.jumpstart
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import android.widget.FrameLayout
+import com.moldedbits.android.R
 
 abstract class BaseToolBarActivity : BaseActivity() {
 

@@ -1,15 +1,13 @@
-package com.moldedbits.android.utils
+package com.adgdelhi.core.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-
-import com.moldedbits.android.BaseApplication
 
 /**
  * Created by abhishek
  * on 18/03/15.
  */
-class LocalStorage (context: Context, prefName: String) {
+abstract class LocalStorage (context: Context, prefName: String) {
 
     private val preferences: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
 

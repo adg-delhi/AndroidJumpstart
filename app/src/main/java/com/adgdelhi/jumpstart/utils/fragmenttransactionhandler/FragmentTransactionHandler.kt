@@ -1,9 +1,9 @@
-package com.moldedbits.android.utils.fragmenttransactionhandler
+package com.adgdelhi.jumpstart.utils.fragmenttransactionhandler
 
 import android.os.Message
 import androidx.fragment.app.FragmentActivity
 
-import com.moldedbits.android.dialogs.ThemedInfoDialog
+import com.adgdelhi.jumpstart.dialogs.ThemedInfoDialog
 
 class FragmentTransactionHandler : PauseHandler() {
 

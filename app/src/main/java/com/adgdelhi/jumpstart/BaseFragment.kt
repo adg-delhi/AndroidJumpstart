@@ -1,9 +1,8 @@
-package com.moldedbits.android
+package com.adgdelhi.jumpstart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.moldedbits.android.dialogs.LoadingDialog
-import com.moldedbits.android.utils.fragmenttransactionhandler.FragmentTransactionHandler
+import com.adgdelhi.jumpstart.utils.fragmenttransactionhandler.FragmentTransactionHandler
 
 abstract class BaseFragment : Fragment() {
 

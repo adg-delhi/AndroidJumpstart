@@ -1,11 +1,12 @@
-package com.moldedbits.android
+package com.adgdelhi.jumpstart
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.FrameLayout
-import com.moldedbits.android.dialogs.LoadingDialog
-import com.moldedbits.android.utils.fragmenttransactionhandler.FragmentTransactionHandler
+import com.adgdelhi.jumpstart.dialogs.LoadingDialog
+import com.adgdelhi.jumpstart.utils.fragmenttransactionhandler.FragmentTransactionHandler
+import com.moldedbits.android.R
 
 
 /**
