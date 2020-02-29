@@ -1,0 +1,30 @@
+ext {
+    // android config
+    compileSdkVersion = 29
+    minSdkVersion = 24
+    targetSdkVersion = 29
+
+    // kotlin libs
+    ktxCoroutinesVersion = "1.3.3"
+
+    // misc libs
+    moshiVersion = "1.8.0"
+    glideVersion = "4.10.0"
+    retrofitVersion = '2.7.0'
+    retrofitLoggingInterceptor = '3.12.0'
+    koinVersion = '2.0.1'
+    dexterVersion = '6.0.1'
+    timberVersion = '4.7.1'
+
+    // AndroidX libraries
+    constraintLayoutVersion = '1.1.3'
+    lifecycleVersion = "2.2.0"
+    navigationComponentVersion = "2.2.1"
+    appcompatVersion = "1.1.0"
+
+    // Other Google Libs
+    materialDesignVersion = '1.1.0'
+
+    //firebase
+    fcmVersion = '20.1.0'
+}

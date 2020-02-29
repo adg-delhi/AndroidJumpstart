@@ -29,9 +29,4 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext {
-    supportLibVersion = "27.1.1"
-    rxJavaVersion = "2.1.6"
-    rxKotlinVersion = "2.1.0"
-    rxAndroidVersion = "2.0.1"
-}
+apply from: "versions.gradle"
