@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.FrameLayout
+import com.adgdelhi.android.R
 import com.adgdelhi.jumpstart.dialogs.LoadingDialog
 import com.adgdelhi.jumpstart.utils.fragmenttransactionhandler.FragmentTransactionHandler
-import com.moldedbits.android.R
-
 
 /**
  * Created by shishank

@@ -1,4 +1,4 @@
-package com.moldedbits.android
+package com.adgdelhi.android
 
 import androidx.test.filters.SmallTest
 import androidx.test.rule.ActivityTestRule

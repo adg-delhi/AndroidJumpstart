@@ -5,8 +5,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.moldedbits.android.R
-
+import com.adgdelhi.android.R
 
 class LoadingDialog : DialogFragment() {
     protected var mbutton = true

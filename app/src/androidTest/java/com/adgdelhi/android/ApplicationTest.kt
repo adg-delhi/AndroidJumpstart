@@ -1,4 +1,4 @@
-package com.moldedbits.android
+package com.adgdelhi.android
 
 import android.app.Application
 import android.test.ApplicationTestCase

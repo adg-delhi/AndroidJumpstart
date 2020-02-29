@@ -1,7 +1,7 @@
 package com.adgdelhi.jumpstart
 
 import android.app.Application
-import com.moldedbits.android.BuildConfig
+import com.adgdelhi.android.BuildConfig
 
 import timber.log.Timber
 
