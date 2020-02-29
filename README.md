@@ -1,6 +1,7 @@
-## Android Jumpstart Kotlin
+## NOTE: Under Development
+## If you wish to contrubute refer project
 
-[![Build Status](http://jenkins.moldedbits.com/buildStatus/icon?job=Android%20Jumpstart)](http://jenkins.moldedbits.com/job/Android%20Jumpstart/)
+## Android Jumpstart Kotlin
 
 With Android Jumpstart, we want to zero down the scaffolding time for Android apps. Most apps we
 work on share the same boilerplate code, including
