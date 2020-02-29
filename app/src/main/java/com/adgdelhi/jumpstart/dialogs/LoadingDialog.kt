@@ -5,7 +5,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.adgdelhi.android.R
+import com.adgdelhi.jumpstart.R
 
 class LoadingDialog : DialogFragment() {
     protected var mbutton = true

@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -84,12 +85,13 @@ android {
     viewBinding {
         enabled = true
     }
-
-    // enable only parcelize and not synthetics
-    androidExtensions {
-        features = ["parcelize"]
-    }
 }
+
+// enable only parcelize and not synthetics
+androidExtensions {
+    features = ["parcelize"]
+}
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -99,8 +101,7 @@ dependencies {
     implementation "com.google.android.material:material:$materialDesignVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.adgdelhi.android.databinding.FragmentThemedDialogBinding
+import com.adgdelhi.jumpstart.databinding.FragmentThemedDialogBinding
 
 /**
  * Created by viveksingh

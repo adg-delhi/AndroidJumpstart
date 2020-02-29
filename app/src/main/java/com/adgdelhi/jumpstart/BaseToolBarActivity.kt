@@ -3,7 +3,7 @@ package com.adgdelhi.jumpstart
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import android.widget.FrameLayout
-import com.adgdelhi.android.R
+import com.adgdelhi.jumpstart.R
 
 abstract class BaseToolBarActivity : BaseActivity() {
 

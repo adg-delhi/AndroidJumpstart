@@ -1,6 +1,6 @@
 package com.adgdelhi.jumpstart.api
 
-import com.adgdelhi.android.BuildConfig
+import com.adgdelhi.jumpstart.BuildConfig
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

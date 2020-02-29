@@ -1,8 +1,6 @@
 package com.adgdelhi.jumpstart
 
 import android.os.Bundle
-import com.adgdelhi.android.R
-
 
 class ExampleAppActivity : BaseDrawerActivity() {
 
