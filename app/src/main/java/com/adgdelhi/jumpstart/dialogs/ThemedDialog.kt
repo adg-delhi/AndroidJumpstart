@@ -9,10 +9,9 @@ import androidx.fragment.app.DialogFragment
 import com.adgdelhi.jumpstart.databinding.FragmentThemedDialogBinding
 
 /**
- * Created by viveksingh
- * on 18/01/16.
+ * A themed dialog which should be styled as per your choice
  */
-class ThemedInfoDialog : DialogFragment() {
+open class ThemedDialog : DialogFragment() {
 
     var okListener: View.OnClickListener? = null
     var button: Boolean = false
@@ -28,26 +27,26 @@ class ThemedInfoDialog : DialogFragment() {
         binding = FragmentThemedDialogBinding.inflate(inflater)
 
         dialog?.setCanceledOnTouchOutside(true)
-        val args = arguments
-        with(binding) {
-            tvMessage.text = args!!.getString(KEY_MESSAGE)
-            tvTitle.text = args.getString(KEY_TITLE)
-            btnNo.visibility = View.GONE
-            button = args.getBoolean(KEY_SHOW_CANCEL_BUTTON)
-            if (button) {
-                btnNo.visibility = View.VISIBLE
-            }
+        arguments?.let {
+            with(binding) {
+                messageTv.text = it.getString(KEY_MESSAGE)
+                titleTv.text = it.getString(KEY_TITLE)
+                negativeBtn.visibility = View.GONE
+                button = it.getBoolean(KEY_SHOW_CANCEL_BUTTON)
+                if (button) {
+                    negativeBtn.visibility = View.VISIBLE
+                }
 
-            if (TextUtils.isEmpty(args.getString(KEY_POSITIVE_BUTTON_TEXT))) {
-                btnOk.text = getString(android.R.string.ok)
-            } else {
-                btnOk.text = args.getString(KEY_POSITIVE_BUTTON_TEXT)
-            }
+                if (TextUtils.isEmpty(it.getString(KEY_POSITIVE_BUTTON_TEXT))) {
+                    positiveBtn.text = getString(android.R.string.ok)
+                } else {
+                    positiveBtn.text = it.getString(KEY_POSITIVE_BUTTON_TEXT)
+                }
 
-            btnOk.setOnClickListener { onClickOk(it) }
-            btnNo.setOnClickListener { onClickCancel() }
+                positiveBtn.setOnClickListener { view -> onClickOk(view) }
+                negativeBtn.setOnClickListener { onClickCancel() }
+            }
         }
-
 
         return binding.root
     }
@@ -73,15 +72,16 @@ class ThemedInfoDialog : DialogFragment() {
 
 
         fun newInstance(title: String, message: String, positiveText: String,
-                        negativeText: String, cancelButton: Boolean): ThemedInfoDialog {
+                        negativeText: String, cancelButton: Boolean): ThemedDialog {
             val bundle = createBundle(title, message, positiveText, negativeText, cancelButton)
-            val dialog = ThemedInfoDialog()
+            val dialog = ThemedDialog()
             dialog.arguments = bundle
             return dialog
         }
 
         protected fun createBundle(title: String, message: String,
-                                   positiveButtonText: String, negativeButtonText: String, cancelButton: Boolean): Bundle {
+                                   positiveButtonText: String, negativeButtonText: String,
+                                   cancelButton: Boolean): Bundle {
             val args = Bundle()
             args.putString(KEY_MESSAGE, message)
             args.putString(KEY_TITLE, title)

@@ -1,9 +1,10 @@
-package com.adgdelhi.jumpstart
+package com.adgdelhi.core.base
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import android.widget.FrameLayout
-import com.adgdelhi.jumpstart.R
+import com.adgdelhi.core.R
+import com.adgdelhi.core.base.BaseActivity
 
 abstract class BaseToolBarActivity : BaseActivity() {
 
@@ -13,7 +14,7 @@ abstract class BaseToolBarActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         super.setContentView(R.layout.activity_base_toolbar)
 
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         assert(supportActionBar != null)

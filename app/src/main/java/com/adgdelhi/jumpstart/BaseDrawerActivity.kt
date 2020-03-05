@@ -9,7 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
-import com.adgdelhi.jumpstart.R
+import com.adgdelhi.core.base.BaseActivity
 
 abstract class BaseDrawerActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
