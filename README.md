@@ -1,26 +1,24 @@
-## NOTE: Under Development
-## If you wish to contrubute refer project
 
 ## Android Jumpstart Kotlin
 
 With Android Jumpstart, we want to zero down the scaffolding time for Android apps. Most apps we
 work on share the same boilerplate code, including
   * Declaring dependencies
-  * Auto-increment version code
+  * Auto-increment version code - ToDo
   * Setting up [Retrofit](http://square.github.io/retrofit/) for API interaction
   * Setting up [Dagger](https://github.com/google/dagger) for dependency injection
   * Setting up common utility classes
-  * Creating a mocking framework for testing
+  * Creating a mocking framework for testing- ToDo
 
 Jumpstart takes care of all this, and more. Jumpstart adds support for many commonly used libraries,
-  * [RxJava 2.0](https://github.com/ReactiveX/RxJava)
   * [Retrofit](http://square.github.io/retrofit/)
   * [Timber](https://github.com/JakeWharton/timber)
+  * ToDo- Add More
 
 ### Setting up
 
 Setting up is really easy, there's a python script
-[here](https://github.com/moldedbits/JumpstartScript) that clones the Jumpstart repo, changes the
+[here](https://github.com/adg-delhi/JumpstartScript) that clones the Jumpstart repo, changes the
 project name and package name. All the developer needs to after this is the update the API urls
 and they have a base project ready.
 
@@ -46,25 +44,7 @@ classes extend this and there's no need to worry about the toolbar.
 TODO Add information about FragmentTransactionHandler
 
 #### BaseFragment
-Similar to `BaseActivity`, extending `BaseFragment` gives you access to `apiService`. It also adds
-utility methods to show and hide progress dialogs.
-
-```java
-// Show loading dialog
-showLoadingDialog(R.string.loading_message)
-
-// Hide loading dialog
-cancelLoadingDialog()
-```
-
-#### LoadingDialog
-A very common requirement in an app is to show a loading dialog. When you just need to show a
-simple dialog with a title and a message, use the LoadingDialog class as
-
-```java
-LoadingDialog.newInstance(title, description, showCancelButton)
-```
-
+Similar to `BaseActivity`, extending `BaseFragment` gives you access to `apiService`.
 #### APIProvider
 The retrofit configuration is done here.
 
