@@ -6,9 +6,14 @@ work on share the same boilerplate code, including
   * Declaring dependencies
   * Auto-increment version code - ToDo
   * Setting up [Retrofit](http://square.github.io/retrofit/) for API interaction
-  * Setting up [Dagger](https://github.com/google/dagger) for dependency injection
+  * Setting up [Koin](http://insert-koin.io) for dependency injection
   * Setting up common utility classes
+    * LocalStorage (wrapper on SharedPreferences)
+    * A themed info dialog
   * Creating a mocking framework for testing- ToDo
+  * Push Notification Service- ToDo
+  * BaseAdapter for RecyclerViews
+  * Setting up Json Serialization and DeSerialization
 
 Jumpstart takes care of all this, and more. Jumpstart adds support for many commonly used libraries,
   * [Retrofit](http://square.github.io/retrofit/)
@@ -26,12 +31,7 @@ and they have a base project ready.
 
 #### BaseActivity
 Make your activities extend one of `BaseActivity`, `BaseToolbarActivity` or `BaseDrawerActivity`,
-(all of which subclass `AppCompatActivity`) depending on your requirements. This gives you access
-to the `APIService` which is injected into the BaseActivities.
-
-```java
-apiService.getSomeResource()
-```
+(all of which subclass `AppCompatActivity`) depending on your requirements.
 
 #### Setting up the Navigation Drawer
 The BaseDrawerActivity handles the Navigation Drawer setup, and the DrawerActionToggle. You can
