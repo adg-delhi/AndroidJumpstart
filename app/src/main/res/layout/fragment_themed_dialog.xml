@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/titleTv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_5x2"
-        tools:text="Title"/>
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="Alert" />
 
     <TextView
         android:id="@+id/messageTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_2x"
+        android:layout_marginTop="16dp"
         android:minWidth="200dp"
-        android:textSize="@dimen/text_2x"/>
+        android:text="Alert Message"
+        android:textSize="@dimen/text_2x" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:layout_marginTop="@dimen/margin_2x"
+        android:gravity="end"
+        android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/negativeBtn"
@@ -36,15 +37,14 @@
             android:layout_marginRight="@dimen/margin_2x"
             android:background="?android:attr/selectableItemBackground"
             android:text="@string/cancel"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/positiveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_2x"
-            android:layout_marginRight="@dimen/margin_2x"
-            android:text="@string/ok"
-            android:background="?android:attr/selectableItemBackground"/>
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/ok" />
     </LinearLayout>
 </LinearLayout>

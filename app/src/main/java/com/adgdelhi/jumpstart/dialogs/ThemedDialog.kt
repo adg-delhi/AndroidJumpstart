@@ -1,4 +1,4 @@
-package com.adgdelhi.jumpstart.dialogs
+package com.hazenetworks.hazemonitor.utils
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -14,7 +14,6 @@ import com.adgdelhi.jumpstart.databinding.FragmentThemedDialogBinding
 open class ThemedDialog : DialogFragment() {
 
     var okListener: View.OnClickListener? = null
-    var button: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +30,13 @@ open class ThemedDialog : DialogFragment() {
             with(binding) {
                 messageTv.text = it.getString(KEY_MESSAGE)
                 titleTv.text = it.getString(KEY_TITLE)
-                negativeBtn.visibility = View.GONE
-                button = it.getBoolean(KEY_SHOW_CANCEL_BUTTON)
-                if (button) {
+                val negativeButtonText = it.getString(KEY_NEGATIVE_BUTTON_TEXT)
+
+                if (negativeButtonText.isNullOrEmpty()) {
+                    negativeBtn.visibility = View.GONE
+                } else {
                     negativeBtn.visibility = View.VISIBLE
+                    negativeBtn.text = negativeButtonText
                 }
 
                 if (TextUtils.isEmpty(it.getString(KEY_POSITIVE_BUTTON_TEXT))) {
@@ -53,9 +55,7 @@ open class ThemedDialog : DialogFragment() {
 
     private fun onClickOk(view: View) {
         dismiss()
-        if (okListener != null) {
-            okListener!!.onClick(view)
-        }
+        okListener?.onClick(view)
     }
 
     fun onClickCancel() {
@@ -63,31 +63,25 @@ open class ThemedDialog : DialogFragment() {
     }
 
     companion object {
-
         private val KEY_MESSAGE = "message"
         private val KEY_TITLE = "title"
         private val KEY_POSITIVE_BUTTON_TEXT = "positive_button_text"
         private val KEY_NEGATIVE_BUTTON_TEXT = "negative_button_text"
-        private val KEY_SHOW_CANCEL_BUTTON = "show_cancel_button"
 
-
-        fun newInstance(title: String, message: String, positiveText: String,
-                        negativeText: String, cancelButton: Boolean): ThemedDialog {
-            val bundle = createBundle(title, message, positiveText, negativeText, cancelButton)
+        fun newInstance(title: String, message: String, positiveText: String, negativeText: String?): ThemedDialog {
+            val bundle = createBundle(title, message, positiveText, negativeText)
             val dialog = ThemedDialog()
             dialog.arguments = bundle
             return dialog
         }
 
-        protected fun createBundle(title: String, message: String,
-                                   positiveButtonText: String, negativeButtonText: String,
-                                   cancelButton: Boolean): Bundle {
+        protected fun createBundle(title: String, message: String, positiveButtonText: String,
+                                   negativeButtonText: String?): Bundle {
             val args = Bundle()
             args.putString(KEY_MESSAGE, message)
             args.putString(KEY_TITLE, title)
             args.putString(KEY_POSITIVE_BUTTON_TEXT, positiveButtonText)
             args.putString(KEY_NEGATIVE_BUTTON_TEXT, negativeButtonText)
-            args.putBoolean(KEY_SHOW_CANCEL_BUTTON, cancelButton)
 
             return args
         }
